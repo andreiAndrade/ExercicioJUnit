@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by Andrei Andrade on 02/11/2016.
  */
@@ -43,5 +45,18 @@ public class ShoppingCartTest {
     public void addItemExistent() {
         this.shoppingCart.addItem(this.products.get(ProductName.Tv.toString()));
         this.shoppingCart.addItem(this.products.get(ProductName.Tv.toString()));
+
+        assertEquals(2, this.shoppingCart.getItems().get(0).getQuantity());
+        assertEquals(1, this.shoppingCart.getItems().size());
     }
+
+    @Test
+    public void addNewItem() {
+        this.shoppingCart.addItem(this.products.get(ProductName.Tv.toString()));
+        this.shoppingCart.addItem(this.products.get(ProductName.Geladeira.toString()));
+
+        assertEquals(2, this.shoppingCart.getItems().size());
+    }
+
+
 }
